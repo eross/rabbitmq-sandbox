@@ -49,7 +49,7 @@ public class RmqApplication {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-		SpringApplication.run(RmqApplication.class, args).close();
+		SpringApplication.run(RmqApplication.class, args);
 	}
 
 }
