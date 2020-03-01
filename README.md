@@ -10,3 +10,6 @@ As simple single server that supports the following API Endpoints.  By default l
 This service also has a Receiver that subscribes to the appropriate topic and recieves the messages.  This class
 can be copied over to a subscriber service mostly as is to receive the messages.
 
+
+# License
+This example was leveraged from the Spring.io reactive web and RabbitMQ guides.
