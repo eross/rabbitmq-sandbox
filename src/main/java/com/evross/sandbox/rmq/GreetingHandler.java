@@ -28,7 +28,15 @@ public class GreetingHandler {
     }
 
     public Mono<ServerResponse> hello(ServerRequest request) {
+
+        String msg = "Message from the reactive REST api!";
+        try{
+                msg = request.pathVariable("msg");
+        } catch (IllegalArgumentException e)
+        {
+            // use default
+        }
         return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN)
-                .body(BodyInserters.fromValue(SendMsg("Message from the reactive REST api!")));
+                .body(BodyInserters.fromValue(SendMsg(msg)));
     }
 }

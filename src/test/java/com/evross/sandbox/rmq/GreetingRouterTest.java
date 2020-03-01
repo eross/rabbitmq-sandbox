@@ -29,4 +29,16 @@ public class GreetingRouterTest {
                 .expectStatus().isOk()
                 .expectBody(String.class).isEqualTo("Message from the reactive REST api!");
     }
+
+    @Test
+    public void testHelloMsg() {
+        webTestClient
+                // Create a GET request to test an endpoint
+                .get().uri("/hello/My Favorite Message")
+                .accept(MediaType.TEXT_PLAIN)
+                .exchange()
+                // and use the dedicated DSL to test assertions against the response
+                .expectStatus().isOk()
+                .expectBody(String.class).isEqualTo("My Favorite Message");
+    }
 }

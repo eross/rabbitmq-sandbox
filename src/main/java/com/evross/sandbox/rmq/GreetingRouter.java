@@ -1,5 +1,6 @@
 package com.evross.sandbox.rmq;
 
+import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -13,9 +14,10 @@ public class GreetingRouter {
 
     @Bean
     public RouterFunction<ServerResponse> route(GreetingHandler greetingHandler) {
-
-        return RouterFunctions
-                .route(RequestPredicates.GET("/hello").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)), greetingHandler::hello);
+        return RouterFunctions.route()
+        .GET("/hello", accept(MediaType.TEXT_PLAIN), greetingHandler::hello)
+        .GET("/hello/{msg}", accept(MediaType.TEXT_PLAIN), greetingHandler::hello)
+        .build();
     }
 }
 
